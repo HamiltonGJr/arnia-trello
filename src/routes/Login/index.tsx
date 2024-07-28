@@ -1,19 +1,24 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 
 import FormButton from "../../components/FormButton";
-// import { Link } from "react-router-dom";
+import FormInput from "../../components/FormInput";
+import { FormBox, FormContainer, TitleArnia } from "./style";
 
 const Login = () => {
   return (
-    <Box component="form" autoComplete="off">
-      <h1>Arnia Trello</h1>
-      <TextField id="outlined-basic" label="E-mail" variant="outlined" />
-      <TextField id="outlined-basic" label="Senha" variant="outlined" />
-      <FormButton>Entrar</FormButton>
-      {/* <Link to={"register"}>Cadastre-se</Link> */}
-    </Box>
+    <FormContainer component="form">
+      <TitleArnia variant="h3">Arnia Trello</TitleArnia>
+
+      <FormBox>
+        <FormInput nameInput={"E-mail"} />
+        <FormInput nameInput={"Senha"} />
+      </FormBox>
+
+      <FormBox>
+        <FormButton>Entrar</FormButton>
+        <a href="">Cadastre-se</a>
+      </FormBox>
+    </FormContainer>
   );
 };
 
