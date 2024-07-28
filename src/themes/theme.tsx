@@ -1,10 +1,11 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@material-ui/core/styles";
 import { red, deepPurple, yellow } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: deepPurple[700],
+      light: deepPurple[400],
     },
     secondary: {
       main: yellow[500],
