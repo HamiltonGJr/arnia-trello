@@ -1,6 +1,5 @@
 import * as React from "react";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import { Button, Stack } from "@mui/material";
 
 import { FormButtonProps } from "../../types/componetsType";
 
