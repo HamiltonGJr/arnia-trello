@@ -7,8 +7,10 @@ import { FormBox, FormContainer, TitleArnia } from "./style";
 const Resgiter = () => {
   return (
     <FormContainer component="form">
-      <TitleArnia variant="h3">Arnia Trello</TitleArnia>
-      <TitleArnia variant="h6">Cadastro</TitleArnia>
+      <FormBox>
+        <TitleArnia variant="h3">Arnia Trello</TitleArnia>
+        <TitleArnia variant="h6">Cadastro</TitleArnia>
+      </FormBox>
 
       <FormBox>
         <FormInput nameInput={"Nome Completo"} />
@@ -17,9 +19,7 @@ const Resgiter = () => {
         <FormInput nameInput={"Repita a sua senha"} />
       </FormBox>
 
-      <FormBox>
-        <FormButton>Cadastrar</FormButton>
-      </FormBox>
+      <FormButton>Cadastrar</FormButton>
     </FormContainer>
   );
 };
