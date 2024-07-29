@@ -1,4 +1,4 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core";
 import { red, deepPurple, yellow } from "@mui/material/colors";
 
 const theme = createTheme({
