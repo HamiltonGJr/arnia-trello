@@ -7,5 +7,5 @@ export const AppContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   fontFamily: "Poppins",
-  backgroundColor: `${theme.palette.primary.light}`,
+  backgroundColor: `${theme.palette.secondary.light}`,
 }));
