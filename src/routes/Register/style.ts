@@ -12,7 +12,7 @@ export const FormContainer = styled(Box)(({ theme }) => ({
   gap: "12px",
   border: `2px solid ${theme.palette.primary.main}`,
   borderRadius: "05px",
-  backgroundColor: "#fff",
+  backgroundColor: `${theme.palette.primary.light}`,
 }));
 export const TitleArnia = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
