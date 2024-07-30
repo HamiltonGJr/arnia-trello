@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 import {
   HeaderContainer,
@@ -14,7 +15,7 @@ const Header = () => {
 
       <HiAndByeContainer>
         <HeaderSubTitle variant="h3">Olá, Hamilton</HeaderSubTitle>
-        <a href="">Sair</a>
+        <Link to={"/"}>Sair</Link>
       </HiAndByeContainer>
     </HeaderContainer>
   );
