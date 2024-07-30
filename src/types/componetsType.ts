@@ -4,4 +4,5 @@ export type FormButtonProps = {
 
 export type FormInputProps = {
   nameInput: string;
+  isPassword?: boolean;
 };
