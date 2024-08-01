@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -26,4 +27,8 @@ export const HiAndByeContainer = styled(Box)`
 export const HeaderSubTitle = styled(Typography)`
   font-size: 25px;
   font-weight: 700;
+`;
+export const LinkBox = styled(Link)`
+  color: #fff;
+  text-decoration: underline;
 `;
