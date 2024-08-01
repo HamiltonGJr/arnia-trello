@@ -5,7 +5,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { FormInputProps } from "../../types/componetsType";
 import { FormInputLabel, FormInputText, FormOutlinedInputText } from "./style";
 
-const FormInput = ({ nameInput, isPassword }: FormInputProps) => {
+const FormInput = ({ nameInput, onChange, isPassword }: FormInputProps) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -28,6 +28,7 @@ const FormInput = ({ nameInput, isPassword }: FormInputProps) => {
               id="outlined-adornment-password"
               type={showPassword ? "text" : "password"}
               label="Senha"
+              onChange={onChange}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -49,6 +50,7 @@ const FormInput = ({ nameInput, isPassword }: FormInputProps) => {
           label={nameInput}
           type="text"
           autoComplete="current-password"
+          onChange={onChange}
           fullWidth
         />
       )}
