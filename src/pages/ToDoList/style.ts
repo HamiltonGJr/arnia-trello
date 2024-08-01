@@ -13,11 +13,13 @@ export const ToDoContainerCard = styled(Box)(({ theme }) => ({
   width: "22%",
   height: "100%",
   padding: "15px 15px 0 15px",
+  overflowY: "auto",
   borderRadius: "06px 06px 0 0",
   backgroundColor: `${theme.palette.primary.light}`,
 }));
 export const ToDoTitle = styled(Typography)(({ theme }) => ({
   fontSize: "26px",
+  marginBottom: "08px",
   fontFamily: "Poppins",
   fontWeight: "600",
   color: `${theme.palette.primary.main}`,
