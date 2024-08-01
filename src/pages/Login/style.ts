@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const FormContainer = styled(Box)(({ theme }) => ({
   width: "25%",
@@ -25,3 +26,7 @@ export const FormBox = styled(Box)`
   align-items: center;
   gap: 12px;
 `;
+export const LinkBox = styled(Link)(({ theme }) => ({
+  color: `${theme.palette.primary.main}`,
+  textDecoration: "underline",
+}));
