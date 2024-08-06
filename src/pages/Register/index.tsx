@@ -1,35 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 import FormButton from "../../components/FormButton";
 import FormInput from "../../components/FormInput";
 import { FormBox, FormContainer, TitleArnia } from "./style";
 import { AppContainer } from "../../styles/BoryStyles";
 import api from "../../data/api";
+import { IRegister } from "../../types/pagesType";
 
 const Resgiter = () => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-
   const navigate = useNavigate();
 
-  const handleOnClickRegister = async () => {
-    if (password !== repeatPassword) {
-      console.log("Senha incorreta");
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IRegister>();
+
+  const onSubmit: SubmitHandler<IRegister> = async (data) => {
+    console.log(data);
+
+    if (data.password !== data.repeatPassword) {
+      toast.error("Senha incorreta!");
       return;
     }
 
     try {
       const user = await api.post("user", {
-        email: email,
-        name: fullName,
-        password: password,
+        email: data.email,
+        name: data.fullName,
+        password: data.password,
       });
 
       if (user) {
-        return navigate("/");
+        toast.success("Cadastro efetuado com sucesso!");
+
+        const navigation = setTimeout(function () {
+          navigate("/");
+        }, 4000);
+
+        return navigation;
       }
     } catch (error) {
       console.log({ error: error });
@@ -38,34 +51,86 @@ const Resgiter = () => {
 
   return (
     <AppContainer>
-      <FormContainer component="form">
+      <FormContainer component="form" onSubmit={handleSubmit(onSubmit)}>
         <FormBox>
           <TitleArnia variant="h3">Arnia Trello</TitleArnia>
           <TitleArnia variant="h6">Cadastro</TitleArnia>
         </FormBox>
 
         <FormBox>
-          <FormInput
-            nameInput={"Nome Completo"}
-            onChange={(e) => setFullName(e.target.value)}
+          <Controller
+            key="fullName"
+            name="fullName"
+            control={control}
+            rules={{
+              required: "O nome é obrigatório!",
+              minLength: 3,
+            }}
+            render={({ field }) => (
+              <FormInput
+                nameInput="Nome*"
+                {...field}
+                error={!!errors.fullName}
+                helperText={errors.fullName?.message}
+              />
+            )}
           />
-          <FormInput
-            nameInput={"E-mail"}
-            onChange={(e) => setEmail(e.target.value)}
+          <Controller
+            key="email"
+            name="email"
+            control={control}
+            rules={{
+              required: "O e-mail é obrigatório!",
+            }}
+            render={({ field }) => (
+              <FormInput
+                nameInput="E-mail*"
+                {...field}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
+            )}
           />
-          <FormInput
-            nameInput={"Senha"}
-            isPassword
-            onChange={(e) => setPassword(e.target.value)}
+          <Controller
+            key="password"
+            name="password"
+            control={control}
+            rules={{
+              required:
+                "A senha é obrigatória! É nescessario ter mais de 06 caracteres!",
+              minLength: 6,
+            }}
+            render={({ field }) => (
+              <FormInput
+                nameInput="Senha*"
+                isPassword
+                {...field}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+            )}
           />
-          <FormInput
-            nameInput={"Repita a sua senha"}
-            isPassword
-            onChange={(e) => setRepeatPassword(e.target.value)}
+          <Controller
+            key="repeatPassword"
+            name="repeatPassword"
+            control={control}
+            rules={{
+              required: "Repetir a senha é obrigatório!",
+              minLength: 6,
+            }}
+            render={({ field }) => (
+              <FormInput
+                nameInput="Repita a sua senha*"
+                isPassword
+                {...field}
+                error={!!errors.repeatPassword}
+                helperText={errors.repeatPassword?.message}
+              />
+            )}
           />
         </FormBox>
 
-        <FormButton onClick={handleOnClickRegister}>Cadastrar</FormButton>
+        <FormButton type={"submit"}>Cadastrar</FormButton>
       </FormContainer>
     </AppContainer>
   );
