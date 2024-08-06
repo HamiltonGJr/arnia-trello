@@ -26,7 +26,7 @@ export const FormBox = styled(Box)`
   align-items: center;
   gap: 12px;
 `;
-export const LinkBox = styled(Link)(({ theme }) => ({
-  color: `${theme.palette.primary.main}`,
-  textDecoration: "underline",
-}));
+export const LinkBox = styled(Link)`
+  color: #fff;
+  text-decoration: underline;
+`;
