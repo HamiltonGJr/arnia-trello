@@ -1,11 +1,22 @@
 import * as React from "react";
-import { FormControl, IconButton, InputAdornment } from "@mui/material";
+import {
+  FormControl,
+  FormHelperText,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import { FormInputProps } from "../../types/componetsType";
 import { FormInputLabel, FormInputText, FormOutlinedInputText } from "./style";
 
-const FormInput = ({ nameInput, onChange, isPassword }: FormInputProps) => {
+const FormInput = ({
+  nameInput,
+  onChange,
+  isPassword,
+  error,
+  helperText,
+}: FormInputProps) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -29,6 +40,7 @@ const FormInput = ({ nameInput, onChange, isPassword }: FormInputProps) => {
               type={showPassword ? "text" : "password"}
               label="Senha"
               onChange={onChange}
+              error={error}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -42,17 +54,22 @@ const FormInput = ({ nameInput, onChange, isPassword }: FormInputProps) => {
                 </InputAdornment>
               }
             />
+            <FormHelperText error>{error ? helperText : ""}</FormHelperText>
           </FormControl>
         </>
       ) : (
-        <FormInputText
-          id="outlined-password-input"
-          label={nameInput}
-          type="text"
-          autoComplete="current-password"
-          onChange={onChange}
-          fullWidth
-        />
+        <FormControl variant="outlined" fullWidth>
+          <FormInputText
+            id="outlined-password-input"
+            label={nameInput}
+            type="text"
+            autoComplete="current-password"
+            onChange={onChange}
+            error={error}
+            fullWidth
+          />
+          <FormHelperText error>{error ? helperText : ""}</FormHelperText>
+        </FormControl>
       )}
     </>
   );
