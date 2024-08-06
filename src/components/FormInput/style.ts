@@ -3,6 +3,7 @@ import { InputLabel, OutlinedInput, TextField } from "@mui/material";
 
 export const FormInputText = styled(TextField)(({ theme }) => ({
   width: "90%",
+  margin: "auto",
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
       border: "2px solid",
@@ -13,6 +14,9 @@ export const FormInputText = styled(TextField)(({ theme }) => ({
     },
     "&.Mui-focused fieldset": {
       borderColor: theme.palette.primary.main,
+    },
+    "& .MuiOutlinedInput-input::placeholder": {
+      color: theme.palette.secondary.main,
     },
   },
   "& .MuiInputLabel-root": {
@@ -38,6 +42,9 @@ export const FormOutlinedInputText = styled(OutlinedInput)(({ theme }) => ({
   },
   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
     borderColor: theme.palette.primary.main,
+  },
+  "& .MuiOutlinedInput-input::placeholder": {
+    color: theme.palette.secondary.main,
   },
   "& .MuiInputLabel-root": {
     backgroundColor: "#fff",
